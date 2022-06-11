@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.raywenderlich.rw_flutter_ui_widgets_v2">
    <application
-        android:label="RW News"
+        android:label="News"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

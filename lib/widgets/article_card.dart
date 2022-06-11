@@ -16,7 +16,7 @@ class ArticleCard extends StatelessWidget {
       elevation: 4,
       child: Column(
         children: [
-          const CardBanner(),
+          CardBanner(imageUr1: article.urlToImage),
           CardDetail(article: article),
         ],
       ),
@@ -32,7 +32,14 @@ class CardBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Placeholder(fallbackHeight: 200),
+        SizedBox(
+          height: 200,
+          width: double.infinity,
+          child: Image.network(
+            imageUr1!,
+            fit: BoxFit.cover,
+          ),
+        ),
         Positioned(
           top: 10,
           right: 10,
