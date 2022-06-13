@@ -11,10 +11,28 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter UI Widgets'),
       ),
-      body: Column(
-        children: [
-          ArticleCard(article: articles[0]),
-        ],
+      // body: GridView.count(
+      //   crossAxisCount: 2,
+      //   // childAspectRatio: 0.95,
+      //   children: [
+      //     ArticleCard(article: articles[0]),
+      //     ArticleCard(article: articles[1]),
+      //     ArticleCard(article: articles[2]),
+      //   ],
+      // ),
+
+      // body: ListView(
+      //   children: [
+      //     ArticleCard(article: articles[0]),
+      //     ArticleCard(article: articles[1]),
+      //     ArticleCard(article: articles[2]),
+      //   ],
+      // ),
+      body: ListView.builder(
+        itemCount: articles.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ArticleCard(article: articles[index]);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
