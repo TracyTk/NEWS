@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
-import '../models/article.dart';
-import '../widgets/article_card.dart';
+import 'home_page.dart';
+import 'inbox_page.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final List<Widget> _pages = [
+    const HomePage(),
+    const InboxPage(),
+  ];
+  int _selectedIndex = 0;
+
+  void _onTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +28,7 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter UI Widgets'),
       ),
+
       // body: GridView.count(
       //   crossAxisCount: 2,
       //   // childAspectRatio: 0.95,
@@ -28,11 +46,23 @@ class MainPage extends StatelessWidget {
       //     ArticleCard(article: articles[2]),
       //   ],
       // ),
-      body: ListView.builder(
-        itemCount: articles.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ArticleCard(article: articles[index]);
-        },
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [..._pages],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onTapped,
+        items: [
+          const BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          const BottomNavigationBarItem(
+            label: 'Inbox',
+            icon: Icon(Icons.mail),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
