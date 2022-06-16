@@ -67,7 +67,11 @@ class CardDetail extends StatelessWidget {
         children: <Widget>[
           Text(
             article!.title,
-            style: const TextStyle(fontSize: 24),
+            //style: const TextStyle(fontSize: 24),
+            //style: Theme.of(context).textTheme.headline5!.copyWith(
+            //     fontStyle: FontStyle.italic,
+            //     color: Colors.grey[600],
+            style: Theme.of(context).textTheme.headline5,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

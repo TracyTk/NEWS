@@ -3,7 +3,7 @@ import '../models/article.dart';
 class ArticleAPI {
   Future<List<Article>> fetchArticles() async {
     try {
-      const success = false;
+      const success = true;
       if (!success) {
         throw Exception('Failed to load Articles!');
       }
