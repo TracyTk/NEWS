@@ -1,7 +1,7 @@
 name: rw_flutter_ui_widgets_v2
 description: A Flutter project that shows different UI widgets in Flutter.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -24,11 +24,11 @@ flutter:
 assets:
   - assets/images/
 
-  fonts:
-    - family: Lato
-      fonts:
-        - asset: assets/fonts/Lato-Regular.ttf
-        - asset: assets/fonts/Lato-Semibold.ttf
-          weight: 600
-        - asset: assets/fonts/Lato-Italic.ttf
-          style: italic
+fonts:
+  - family: Lato
+    fonts:
+      - asset: assets/fonts/Lato-Regular.ttf
+      - asset: assets/fonts/Lato-Semibold.ttf
+        weight: 600
+      - asset: assets/fonts/Lato-Italic.ttf
+        style: italic
