@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/form_data.dart';
+import '../widgets/form_result.dart';
 
 class CreateArticle extends StatefulWidget {
   const CreateArticle({Key? key}) : super(key: key);
@@ -61,6 +62,7 @@ class _CreateArticleState extends State<CreateArticle> {
                 validator: (value) => value!.isEmpty || value.length < 10
                     ? 'Content too short'
                     : null,
+                onSaved: (value) => formData.content = value,
               ),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 20),
@@ -102,10 +104,7 @@ class _CreateArticleState extends State<CreateArticle> {
                     form.save();
                     print(formData);
                     form.reset();
-                    setState(() {
-                      formData.isBreaking = false;
-                      formData.category = null;
-                    });
+                    _showResultDialog(context);
                   }
                   FocusScope.of(context).unfocus();
                 },
@@ -116,5 +115,29 @@ class _CreateArticleState extends State<CreateArticle> {
         ),
       ),
     );
+  }
+
+  Future<void> _showResultDialog(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: FormResult(data: formData),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Done'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    ).then((value) {
+      setState(() {
+        formData.isBreaking = false;
+        formData.category = null;
+      });
+    });
   }
 }
